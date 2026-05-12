@@ -1,6 +1,6 @@
 # Local MedGemma — Chest X-Ray Interpreter
 
-A simple, privacy-first web app for interpreting chest X-ray DICOM images using Google's MedGemma AI model, running entirely on your local machine.
+A simple, privacy-first web app for interpreting chest X-ray DICOM images using Google's MedGemma VLM, running entirely on your local machine.
 
 ## Why I built this
 
@@ -48,3 +48,4 @@ Obviously for personal informational use only. AI output does not constitute med
 
 Can take a while to run, and will depend very highly on your hardware. Local inference on my MBP 2020 M1 takes about 25 minutes per image. The model runs basically entirely on the neural engine / gpu cores on Apple Silicon, so your CPU is pretty free and you can just let this run in the background unless you're doing anything that requires heavy GPU workload. 
 
+See medgemma here: [https://huggingface.co/collections/google/medgemma-release](https://huggingface.co/collections/google/medgemma-release)
