@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+pydicom
+numpy
+pillow
+torch
+transformers
+accelerate

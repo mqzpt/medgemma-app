@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedGemma — X-Ray Interpreter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">Local MedGemma</div>
+      <div class="subtitle">Chest X-Ray Interpreter · google/medgemma-4b-it</div>
+    </header>
+
+    <main>
+      <div class="upload-zone" id="dropzone">
+        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+        </svg>
+        <p class="upload-label">Drop DICOM or image files here</p>
+        <p class="upload-hint">Supports .dcm · .jpg · .png</p>
+        <button class="btn-secondary" id="browseBtn">Browse files</button>
+        <input type="file" id="fileInput" multiple accept=".dcm,.jpg,.jpeg,.png" />
+      </div>
+
+      <ul class="file-list" id="fileList"></ul>
+
+      <button class="btn-primary" id="interpretBtn" disabled>
+        <span id="btnLabel">Interpret</span>
+        <span class="spinner" id="spinner" hidden></span>
+      </button>
+
+      <p class="disclaimer">
+        AI output is for informational purposes only and does not constitute medical advice.
+        Always consult a licensed radiologist or physician.
+      </p>
+    </main>
+
+    <section class="results" id="results"></section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

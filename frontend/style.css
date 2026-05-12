@@ -1,0 +1,259 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0d1117;
+  --surface:   #161b22;
+  --surface2:  #1e2430;
+  --border:    #30363d;
+  --accent:    #2f81f7;
+  --accent-dim:#1a4a8a;
+  --text:      #e6edf3;
+  --text-dim:  #8b949e;
+  --green:     #3fb950;
+  --red:       #f85149;
+  --mono:      "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+/* ── Header ── */
+header {
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--accent);
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  margin-top: 0.25rem;
+}
+
+/* ── Upload zone ── */
+.upload-zone {
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  background: var(--surface);
+}
+
+.upload-zone.drag-over {
+  border-color: var(--accent);
+  background: #161f2e;
+}
+
+.upload-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--text-dim);
+  margin: 0 auto 1rem;
+}
+
+.upload-label {
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.upload-hint {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  margin-bottom: 1rem;
+}
+
+#fileInput { display: none; }
+
+/* ── File list ── */
+.file-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+.file-item .file-name { flex: 1; color: var(--text); }
+.file-item .file-size { color: var(--text-dim); }
+
+.file-remove {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 2px;
+  font-size: 1rem;
+  transition: color 0.1s;
+}
+
+.file-remove:hover { color: var(--red); }
+
+/* ── Buttons ── */
+.btn-primary, .btn-secondary {
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 0.75rem;
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-primary:not(:disabled):hover { background: #388bef; }
+
+.btn-secondary {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.5rem 1.2rem;
+}
+
+.btn-secondary:hover { background: var(--border); }
+
+/* ── Spinner ── */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Disclaimer ── */
+.disclaimer {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── Results ── */
+.results {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.result-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.result-card.comparison {
+  border-color: var(--accent-dim);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+  font-family: var(--mono);
+}
+
+.card-header .badge {
+  background: var(--accent-dim);
+  color: var(--accent);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.result-card.comparison .badge {
+  background: #1a2f1a;
+  color: var(--green);
+}
+
+.card-body {
+  padding: 1rem 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Blinking cursor on the active streaming card */
+.card-body.streaming::after {
+  content: "▋";
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.card-body .bold  { font-weight: 700; color: #c9d1d9; }
+
+/* Error state */
+.error-card {
+  background: #1a0d0d;
+  border: 1px solid var(--red);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  color: var(--red);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
